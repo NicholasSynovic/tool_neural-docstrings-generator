@@ -17,3 +17,6 @@ pyfs = {git = "https://github.com/NicholasSynovic/python-fs-utils"}
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+ndg = "nueral_docstrings.main:main"
