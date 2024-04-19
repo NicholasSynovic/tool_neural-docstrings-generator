@@ -37,7 +37,7 @@ To install:
 
 1. `git clone` this repository
 1. `cd` into this repository
-1. Install dependencies with `pip install -r requirments && poetry install`
+1. Install dependencies with `pip install -r requirements && poetry install`
 1. Build and install the `ndg` tool with `make`
 
 ### Dependencies
@@ -66,7 +66,7 @@ Options:
 ```
 
 If your `input` and `output` are equivalent, then a new file will be created in
-the same directory as `input`, but with hte `.ndg` file extension appeneded to
+the same directory as `input`, but with the `.ndg` file extension appended to
 avoid overwriting content between the two files.
 
 ## Default LLM
