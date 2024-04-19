@@ -72,7 +72,7 @@ avoid overwriting content between the two files.
 ## Default LLM
 
 By default,
-[Ollama's default CodeGemma model (codegemma)](https://ollama.com/library/codegemma)
+[Ollama's default CodeGemma model (`codegemma`)](https://ollama.com/library/codegemma)
 is used for this tool.
 
 ## Default System Prompt
