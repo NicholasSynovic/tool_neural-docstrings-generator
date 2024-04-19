@@ -4,12 +4,13 @@
 
 ## Table of Contents
 
-- [Neural Docstring Generator `ndg`](#neural-docstring-generator-ndg)
+- [Neural Docstring Generator (`ndg`)](#neural-docstring-generator-ndg)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [How to Install](#how-to-install)
     - [Dependencies](#dependencies)
   - [How to Run](#how-to-run)
+  - [Default LLM](#default-llm)
   - [Default System Prompt](#default-system-prompt)
 
 ## About
@@ -67,6 +68,12 @@ Options:
 If your `input` and `output` are equivalent, then a new file will be created in
 the same directory as `input`, but with hte `.ndg` file extension appeneded to
 avoid overwriting content between the two files.
+
+## Default LLM
+
+By default,
+[Ollama's default CodeGemma model (codegemma)](https://ollama.com/library/codegemma)
+is used for this tool.
 
 ## Default System Prompt
 
