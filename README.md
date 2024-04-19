@@ -1,4 +1,4 @@
-# Neural Docstring Generator `ndg`
+# Neural Docstring Generator (`ndg`)
 
 > A small program to generate docstrings using Ollama-compatible LLMs
 
@@ -48,7 +48,7 @@ The following dependencies are required:
 - `langchain`
 - `progress`
 - `click`
-- [pyfs](https://github.com/NicholasSynovic/python-fs-utils%22)
+- [`pyfs`](https://github.com/NicholasSynovic/python-fs-utils%22)
 
 ## How to Run
 
