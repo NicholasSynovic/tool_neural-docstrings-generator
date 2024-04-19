@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "neural-docstrings"
+name = "ndg"
 version = "0.1.0"
 description = ""
 authors = ["Nicholas M. Synovic <nicholas.synovic@gmail.com>"]
@@ -18,4 +18,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-ndg = "neural_docstrings.main:main"
+ndg = "ndg.main:main"

@@ -18,6 +18,15 @@ Return as raw text."""
 
 
 def readFile(path: Path) -> str:
+    """
+    Reads a file and returns its contents as a string.
+
+    Args:
+        path: The path to the file.
+
+    Returns:
+        The contents of the file as a string.
+    """
     with open(file=path, mode="r") as sourceFile:
         code: List[str] = sourceFile.readlines()
         sourceFile.close()
@@ -26,10 +35,34 @@ def readFile(path: Path) -> str:
 
 
 def segmentFunctions(code: str) -> List[str]:
+    """
+    Splits the code into individual functions.
+
+    Args:
+        code: The code to be segmented.
+
+    Returns:
+        A list of function definitions.
+    """
     return [c.strip() for c in code.split(sep="def ")[1:]]
 
 
-def inference(systemPrompt: str, code: str, model: str = "codegemma") -> str:
+def inference(
+    systemPrompt: str,
+    code: str,
+    model: str = "codegemma",
+) -> str:
+    """
+    Generates docstrings for given code using the specified model.
+
+    Args:
+        systemPrompt: The system prompt to use.
+        code: The code to generate docstrings for.
+        model: The LLM model to use. Defaults to "codegemma".
+
+    Returns:
+        The generated docstrings.
+    """
     output_parser = StrOutputParser()
     chatPrompt: ChatPromptTemplate = ChatPromptTemplate.from_messages(
         [("system", systemPrompt), ("user", "{input}")]
@@ -83,6 +116,18 @@ def main(
     output: Path,
     model: str,
 ) -> None:
+    """
+    Generates docstrings for functions in a given source file.
+
+    Args:
+        systemPrompt: The prompt to use for the docstring generation model.
+        sourceFile: The path to the source file.
+        output: The path to the output file.
+        model: The name of the docstring generation model to use.
+
+    Returns:
+        None
+    """
     data: List[str] = []
     sf: Path = resolvePath(path=sourceFile)
     output: Path = resolvePath(path=output)
