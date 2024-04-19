@@ -13,7 +13,8 @@ from pyfs import resolvePath
 SYSTEM_PROMPT: str = """This file contains code for counting lines of code of software projects.
 Generate suitable docstring for these Python functions in Google's style.
 Do not explain the result.
-Return as raw text"""
+Only return the docstring and function declaration.
+Return as raw text."""
 
 
 def readFile(path: Path) -> str:
