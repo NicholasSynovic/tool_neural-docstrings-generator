@@ -9,6 +9,7 @@
   - [About](#about)
   - [How to Install](#how-to-install)
     - [Dependencies](#dependencies)
+    - [Installation Instructions](#installation-instructions)
   - [How to Run](#how-to-run)
   - [Default LLM](#default-llm)
   - [Default System Prompt](#default-system-prompt)
@@ -33,12 +34,9 @@ concept on how to:
 
 `ndg` was tested to work on x86-64 Linux computers running `Python3.10`.
 
-To install:
-
-1. `git clone` this repository
-1. `cd` into this repository
-1. Install dependencies with `pip install -r requirements && poetry install`
-1. Build and install the `ndg` tool with `make`
+It is assumed that you have a working `ollama` instance on your computer. To
+learn more, see the
+[Ollama GitHub repository](https://github.com/ollama/ollama).
 
 ### Dependencies
 
@@ -50,6 +48,15 @@ The following dependencies are required:
 - `progress`
 - `click`
 - [`pyfs`](https://github.com/NicholasSynovic/python-fs-utils%22)
+
+### Installation Instructions
+
+To install:
+
+1. `git clone` this repository
+1. `cd` into this repository
+1. Install dependencies with `pip install -r requirments && poetry install`
+1. Build and install the `ndg` tool with `make`
 
 ## How to Run
 
