@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 from typing import List
 
@@ -82,7 +83,16 @@ def main(systemPrompt: str, sourceFile: Path, output: Path) -> None:
     with open(file=output, mode="w") as outputFile:
         code: str
         for code in data:
-            outputFile.write(code + "\n\n---\n\n")
+            formattedCode: str = (
+                re.sub(
+                    r"^.*`.*\n?",
+                    "",
+                    code,
+                    flags=re.MULTILINE,
+                )
+                + "\n\n"
+            )
+            outputFile.write(formattedCode)
         outputFile.close()
 
 
