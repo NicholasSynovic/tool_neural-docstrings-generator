@@ -44,21 +44,30 @@ def inference(systemPrompt: str, code: str, model: str = "codegemma") -> str:
 
 @click.command()
 @click.option(
+    "-i",
+    "--input",
+    "sourceFile",
+    type=Path,
+    required=True,
+    help="Source file to generate docstrings for",
+)
+@click.option(
+    "-m",
+    "--model",
+    "model",
+    type=str,
+    required=False,
+    default="codegemma",
+    help="LLM used to generate docstrings. NOTE: Must be recognizable by Ollama",
+)
+@click.option(
     "-s",
     "--system",
     "systemPrompt",
     type=str,
     required=False,
     default=SYSTEM_PROMPT,
-    help="System prompt",
-)
-@click.option(
-    "-i",
-    "--input",
-    "sourceFile",
-    type=Path,
-    required=True,
-    help="File to analyze",
+    help="The system prompt to use",
 )
 @click.option(
     "-o",
@@ -66,11 +75,20 @@ def inference(systemPrompt: str, code: str, model: str = "codegemma") -> str:
     "output",
     type=Path,
     required=True,
-    help="File to output to",
+    help="File to output docstrings to",
 )
-def main(systemPrompt: str, sourceFile: Path, output: Path) -> None:
+def main(
+    systemPrompt: str,
+    sourceFile: Path,
+    output: Path,
+    model: str,
+) -> None:
     data: List[str] = []
     sf: Path = resolvePath(path=sourceFile)
+    output: Path = resolvePath(path=output)
+
+    if output == sf:
+        output = output.with_suffix(suffix=".ndg")
 
     code: str = readFile(path=sf)
     functions: List[str] = segmentFunctions(code=code)
@@ -78,7 +96,7 @@ def main(systemPrompt: str, sourceFile: Path, output: Path) -> None:
     with Bar("Generating docstrings...", max=len(functions)) as bar:
         func: str
         for func in functions:
-            data.append(inference(systemPrompt=systemPrompt, code=func))
+            data.append(inference(systemPrompt=systemPrompt, code=func, model=model))
             bar.next()
 
     with open(file=output, mode="w") as outputFile:
